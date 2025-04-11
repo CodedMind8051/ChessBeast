@@ -26,6 +26,7 @@ git clone https://github.com/CodedMind8051/Chess_Beast.git
 cd Chess_Beast
 npm install
 npm start
+```
 
 
 
@@ -49,7 +50,6 @@ Acknowledgements
 - Consider adding screenshots or a demo link if available to showcase your game visually.
 - Feel free to adjust any wording to match your voice or the specific details of your project.
 
-Let me know if you need further modifications or additions!
 
 
 
