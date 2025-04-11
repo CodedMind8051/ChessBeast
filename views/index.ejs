@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css"
+        integrity="sha384-q94+BZtLrkL1/ohfjR8c6L+A6qzNH9R2hBLwyoAfu3i/WCvQjzL2RQJ3uNHDISdU" crossorigin="anonymous">
+    <title>Chess_Beast</title>
+
+    <style>
+        /* Global Styling */
+        /* General Page Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #090a1a, #1a1f3c);
+            color: #dcdfe6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        /* ChessBeast Glowing Heading */
+        h1 {
+            font-size: 55px;
+            font-weight: 700;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            margin-bottom: 25px;
+            text-shadow: 0px 4px 15px rgba(0, 191, 255, 0.8);
+            background: linear-gradient(45deg, #00bfff, #ff00ff);
+            -webkit-text-fill-color: transparent;
+            animation: glowing 1.5s infinite alternate;
+        }
+
+        /* Glowing Effect for Heading */
+        @keyframes glowing {
+            from {
+                text-shadow: 0px 4px 20px rgba(0, 191, 255, 0.8);
+            }
+
+            to {
+                text-shadow: 0px 6px 30px rgba(255, 0, 255, 1);
+            }
+        }
+
+        /* Main Chess Container */
+        .main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        /* Chess Board Container with Neon Glow */
+        .main_board {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(15, 18, 50, 0.95);
+            border-radius: 20px;
+            box-shadow: 0px 12px 40px rgba(0, 191, 255, 0.5);
+            padding: 35px;
+            margin: 30px 0;
+            width: 65%;
+            border: 3px solid rgba(0, 191, 255, 0.6);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            border: solid red 2px;
+        }
+
+        /* Hover Effect on Board */
+        .main_board:hover {
+            transform: scale(1.03);
+            box-shadow: 0px 12px 50px rgba(255, 0, 255, 0.7);
+        }
+
+        /* Chess Board Styling */
+        .board {
+            align-items: center;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0px 10px 25px rgba(0, 191, 255, 0.6);
+            background: #161b3d;
+            padding: 15px;
+        }
+
+        /* Player's Eliminated Pieces */
+        .White_eliminate,
+        .Black_eliminate {
+            background: rgba(25, 30, 70, 0.9);
+            border-radius: 15px;
+            box-shadow: 0px 10px 30px rgba(255, 0, 255, 0.4);
+            padding: 20px;
+            width: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            border: 2px solid rgba(0, 191, 255, 0.6);
+        }
+
+        /* Eliminated Piece Neon Effect */
+        .Eliminate_img {
+            width: 14%;
+            transition: transform 0.3s ease-in-out, filter 0.3s;
+            filter: drop-shadow(0px 5px 8px rgba(255, 0, 255, 0.5));
+        }
+
+        /* Hover Effect on Pieces */
+        .Eliminate_img:hover {
+            transform: scale(1.3);
+            filter: drop-shadow(0px 8px 15px rgba(0, 191, 255, 0.8));
+        }
+
+
+        .notice {
+            position: fixed;
+            top: 300px;
+            z-index: 999;
+            background: rgba(255, 0, 100, 0.9);
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0px 5px 20px rgba(255, 0, 255, 0.6);
+            color: #fff;
+            animation: fadeNotice 0.5s ease-in-out;
+            display: none;
+        }
+
+        /* Neon Border Animation */
+        @keyframes neonBorder {
+            0% {
+                box-shadow: 0px 0px 10px rgba(0, 191, 255, 0.7);
+            }
+
+            50% {
+                box-shadow: 0px 0px 20px rgba(255, 0, 255, 0.9);
+            }
+
+            100% {
+                box-shadow: 0px 0px 10px rgba(0, 191, 255, 0.7);
+            }
+        }
+
+        /* Make the Chess Board Glow */
+        .board {
+            animation: neonBorder 2s infinite alternate;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 32px;
+                letter-spacing: 3px;
+            }
+
+            .main_board {
+                width: 95%;
+                padding: 15px;
+                margin: 20px 0;
+            }
+
+            #board {
+                width: 100% !important;
+            }
+
+            .White_eliminate,
+            .Black_eliminate {
+                width: 90%;
+                flex-wrap: wrap;
+                padding: 15px;
+            }
+
+            .Eliminate_img {
+                width: 20%;
+            }
+
+            .notice {
+                top: 500px;
+                font-size: 16px;
+                /* padding: 10px 20px; */
+                position: fixed;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 26px;
+            }
+
+            .Eliminate_img {
+                width: 25%;
+            }
+
+            .main_board {
+                padding: 10px;
+            }
+
+            .notice {
+                top: 500px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+        <div id="Black_eliminate" class="Black_eliminate">
+        </div>
+        <div class="main_board">
+            <div class="board" id="board" style="width: 400px"></div>
+        </div>
+        <div id="noticeBox" class="notice "></div>
+        <div id="White_eliminate" class="White_eliminate">
+
+        </div>
+    </div>
+</body>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2"
+    crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"
+    integrity="sha384-8Vi8VHwn3vjQ9eUHUxex3JSN/NFqUg3QbPyX8kWyb93+8AC/pPWTzj+nHtbC5bxD"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+<!-- Main client js Start     -->
+<script src="client.js"></script>
+
+</html>
