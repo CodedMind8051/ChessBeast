@@ -26,3 +26,31 @@ git clone https://github.com/CodedMind8051/Chess_Beast.git
 cd Chess_Beast
 npm install
 npm start
+
+
+
+
+Then, open your browser and navigate to http://localhost:3000 to start playing!
+Contributing
+
+Contributions are welcome! If you have suggestions for improvements or want to add features, feel free to fork the repository and submit a pull request.
+License
+
+This project is licensed under the MIT License.
+Acknowledgements
+
+    Chessboard.js for the chessboard UI.
+
+    Chess.js for chess game logic.
+
+
+### Additional Tips:
+- You can customize sections like **Features** and **Technologies Used** based on your actual implementation.
+- Consider adding screenshots or a demo link if available to showcase your game visually.
+- Feel free to adjust any wording to match your voice or the specific details of your project.
+
+Let me know if you need further modifications or additions!
+
+
+
+
